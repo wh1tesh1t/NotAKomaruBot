@@ -6,6 +6,7 @@ from hydrogram import idle
 
 from miku import MikuBot
 from miku.utils.colors import TextColor
+from miku.database import database
 
 logging.basicConfig(
     level=logging.INFO,
@@ -20,23 +21,23 @@ logging.getLogger("hydrogram.client").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
 if platform.system() == "Windows":
-    logger.info(TextColor.yellow("Windows detected: uvloop is not used!"))
+    logger.info(TextColor.yellow("Windows detected: uvloop is not used."))
 else:
     import uvloop
     uvloop.install()
-    logger.info(TextColor.green("uvloop has been set as the default event loop!"))
+    logger.info(TextColor.green("uvloop has been set as the default event loop."))
 
 
 async def main():
     miku = MikuBot()
 
     try:
+        await database.connect()
         await miku.start()
         await idle()
-    except KeyboardInterrupt:
-        logger.warning(TextColor.yellow("Forced stop… Bye!"))
     finally:
         await miku.stop()
+        await database.close()
 
 
 

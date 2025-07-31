@@ -51,4 +51,4 @@ class MikuBot(Client):
 
     async def stop(self):
         await super().stop()
-        logger.warning(TextColor.red("MikuBot has been stopped!"))
+        logger.info(TextColor.red("MikuBot has been stopped."))
