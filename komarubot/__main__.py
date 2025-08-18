@@ -4,9 +4,8 @@ import platform
 
 from hydrogram import idle
 
-from miku import MikuBot
-from miku.utils.colors import TextColor
-from miku.database import database
+from komarubot import KomaruBot
+from komarubot.utils.colors import TextColor
 
 logging.basicConfig(
     level=logging.INFO,
@@ -14,30 +13,20 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-# Reduce noisy logs from hydrogram modules
 logging.getLogger("hydrogram.syncer").setLevel(logging.WARNING)
 logging.getLogger("hydrogram.client").setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
 
-if platform.system() == "Windows":
-    logger.info(TextColor.yellow("Windows detected: uvloop is not used."))
-else:
-    import uvloop
-    uvloop.install()
-    logger.info(TextColor.green("uvloop has been set as the default event loop."))
-
 
 async def main():
-    miku = MikuBot()
+    komaru = KomaruBot()
 
     try:
-        await database.connect()
-        await miku.start()
+        await komaru.start()
         await idle()
     finally:
-        await miku.stop()
-        await database.close()
+        await komaru.stop()
 
 
 

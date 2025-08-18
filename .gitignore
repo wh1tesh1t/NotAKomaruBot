@@ -6,7 +6,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-miku/*.session*
 *.session
 config.env
 *.sqlite3

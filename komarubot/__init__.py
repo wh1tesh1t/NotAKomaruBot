@@ -7,26 +7,25 @@ from hydrogram.enums import ParseMode
 from hydrogram.errors import BadRequest
 from hydrogram.raw.all import layer
 
-from miku.config import MikuConfig
+from komarubot.config import BotConfig
 
-from miku.utils.git import Git
-from miku.utils.colors import TextColor
+from komarubot.utils.git import Git
+from komarubot.utils.colors import TextColor
 
 logger = logging.getLogger(__name__)
 
-class MikuBot(Client):
+class KomaruBot(Client):
     def __init__(self):
-        self.config = MikuConfig()
+        self.config = BotConfig()
 
         super().__init__(
             name=self.__class__.__name__,
-            app_version=f"MikuBot r{Git.version()} ({Git.commit()})",
+            app_version=f"NotAKomaruBot r{Git.version()} ({Git.commit()})",
             api_id=self.config.API_ID,
             api_hash=self.config.API_HASH,
             bot_token=self.config.TOKEN,
             parse_mode=ParseMode.HTML,
-            workers=self.config.WORKERS,
-            #plugins={"root": "miku.plugins"},
+            plugins={"root": "komarubot.plugins"},
             sleep_threshold=180,
         )
 
@@ -34,12 +33,12 @@ class MikuBot(Client):
         await super().start()
         self.start_time = time.time()
 
-        logger.info(TextColor.green(
-            f"Hydrogram v{hydrogram.__version__} (Layer {layer}) — MikuBot started on user @{self.me.username}."
+        logger.info(TextColor.cyan(
+            f"Hydrogram v{hydrogram.__version__} (Layer {layer}) — started on user @{self.me.username}."
         ))
 
         message = (
-            "<b>MikuBot is now online!</b>\n"
+            "<b>NotAKomaruBot is now online!</b>\n"
             f"<b>Version:</b> <code>r{Git.version()} ({Git.commit()})</code>\n"
             f"<b>Hydrogram:</b> <code>v{hydrogram.__version__}</code>"
         )
@@ -51,4 +50,3 @@ class MikuBot(Client):
 
     async def stop(self):
         await super().stop()
-        logger.info(TextColor.red("MikuBot has been stopped."))
