@@ -3,7 +3,7 @@
 
 from hydrogram.enums import ChatType
 
-from miku.utils.consts import GROUP_TYPES
+from komaru.utils.consts import GROUP_TYPES
 
 from .core import database
 
