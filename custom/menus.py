@@ -20,7 +20,7 @@ Download 'Cache' - callback - ignore | 3⃣ - url - https://store.steampowered.c
 
 {start_pvt}:
 ­  - callback - ignore
-Source code ❤ - url - https://github.com/Elinsrc/MikuBot | 🗑 - callback - delete_message
+❤ Source code - url - https://github.com/wh1tesh1t/NotAKomaruBot | 🗑 - callback - delete_message
 
 {sudos}:
 Menu - callback - /menu/start
