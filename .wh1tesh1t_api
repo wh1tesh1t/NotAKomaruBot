@@ -1,0 +1,11 @@
+ignore:(
+*.session*
+*.db*
+config.py
+__pycache__
+)
+
+move:(
+*.py
+komaru/* + search all *.py & read ignore
+)
