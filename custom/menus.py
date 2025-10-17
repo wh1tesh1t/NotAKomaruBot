@@ -9,7 +9,7 @@
 
 #	=	=	=	=	=
 {git}:
-api.github.com - url - https://api.github.com/
+_git_api_url - url - https://api.github.com/
 
 {xash}:
 ­  - callback - ignore
@@ -20,10 +20,10 @@ Download 'Cache' - callback - ignore | 3⃣ - url - https://store.steampowered.c
 
 {start_pvt}:
 ­  - callback - ignore
-❤ Source code - url - https://github.com/wh1tesh1t/NotAKomaruBot | 🗑 - callback - delete_message
+_source_code - url - https://github.com/wh1tesh1t/NotAKomaruBot | _delete_button - callback - delete_message
 
 {sudos}:
-Menu - callback - /menu/start
-Menu 2 - callback - /menu/lang
-Menu 3 - callback - /menu/commands
+Menu(/menu/start) - callback - /menu/start
+Menu2(/menu/lang) - callback - /menu/lang
+Menu3(/menu/commands) - callback - /menu/commands
 #	=	=	=	=	=
