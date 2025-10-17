@@ -5,7 +5,7 @@ import re
 from typing import Callable, Any
 
 from hydrogram import Client, filters
-from hydrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
+from hydrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message, InlineQuery
 
 from config import PREFIXES
 from komaru.utils.localization import Strings, get_lang, get_locale_string
@@ -55,16 +55,18 @@ def build_kbc(file_path=_menu_load_file) -> dict[str, list[list[dict[str, str]]]
 def setup_keyboard() -> Callable[[Callable], Callable]:
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
-        async def wrapper(c: Client, m: Message | CallbackQuery, *args: Any, **kwargs: Any) -> Any:
+        async def wrapper(c: Client, m: Message | CallbackQuery | InlineQuery, *args: Any, **kwargs: Any) -> Any:
             if args and callable(args[-1]):
                 s = args[-1]
                 args = args[:-1]
             else:
                 lang = await get_lang(m, c)
                 s = partial(get_locale_string, lang)
+            if isinstance(m, InlineQuery):
+                return await func(c, m, s, *args, **kwargs)
             cmd_fmenu = None
             func_name = func.__name__
-            if isinstance(m, Message) and m.command:
+            if isinstance(m, Message) and hasattr(m, "command") and m.command:
                 cmd_fmenu = f"/{m.command[0]}"
             elif isinstance(m, CallbackQuery) and m.data:
                 cmd_fmenu = _callback_tcm.get(m.data)
