@@ -258,7 +258,7 @@ async def send_msg(c: Client, m: Message, s: Strings):
                 region_parts = region.split()
                 value = region_parts[0]
                 label = region[len(value):].strip()
-                btn_text = label or (s("send_button_url") if match.group(1) == "url" else s("send_button_callback"))
+                btn_text = label or (s("send_button_url_no_text") if match.group(1) == "url" else s("send_button_callback_no_text"))
                 if match.group(1) == "url":
                     row_buttons.append(InlineKeyboardButton(btn_text, url=value))
                 else:
