@@ -19,7 +19,7 @@ from yarl import URL
 from config import PREFIXES
 from komaru.utils import commands, http, inline_commands
 from komaru.utils.localization import Strings, use_chat_lang
-
+from komaru.utils.builder_keyboard import setup_keyboard
 
 async def get_api_return(ip: str) -> dict[str, str]:
     r = await http.get(f"https://ipinfo.io/{ip}/json")
@@ -84,6 +84,7 @@ async def get_ips_from_string(hostname: str) -> list[str]:
 
 @Client.on_message(filters.command("ip", PREFIXES))
 @use_chat_lang
+@setup_keyboard()
 async def ip_cmd(c: Client, m: Message, s: Strings):
     if len(m.text.split()) == 1:
         await m.reply_text(s("ip_err_no_ip"))

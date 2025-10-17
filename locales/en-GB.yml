@@ -87,3 +87,38 @@ xash_players: "# Name [Frags] (Time)"
 xash_protocol: "Protocol: "
 xash_select_server: "Found {count} servers. Please select the desired server:\n\n☑=Verified"
 parsebtn_err: "<b>Enter link and text of button</b>\n<b>Exmaple</b>: <code>https://hash3d.top Catch the f1sh if you can</code>\n<b>Result</b>: <code>[Catch the f1sh if you can](buttonurl:https://hash3d.top)</code>"
+send_help: |
+  <b>Command:</b> <code>!send</code>
+  Send messages with button support.
+
+  <b>Arguments:</b>
+  ››› <code>-t</code> — text
+  ››› <code>-id</code> — chat ID
+  ››› <code>-tid</code> — forum topic ID
+  ››› <code>-rply</code> — reply to a message by ID
+  ››› <code>-url(Number)</code> — add a URL button
+  ››› <code>-cb(Number)</code> — add a callback button
+  ››› <code>-edit</code> — edit a message
+  ››› <code>-del</code> — delete a message
+  ››› <code>-fwd</code> — forward a message
+  ››› <code>-h</code> — show help message
+  ››› <code>|</code> — separator for url/cb buttons (new row)
+
+  <b>Examples:</b>
+  <code>!send -t Hello\nWorld</code> <b>Simple message</b>
+  <code>!send -id -1001234567890 -tid 55 -t Hello!</code> <b>Message in topic</b>
+  <code>!send -t Website link -url1 https://github.com GitHub Link</code> <b>Message with URL button</b>
+  <code>!send -t Text with Callback button -cb1 start_pvt Start Private</code> <b>Message with Callback button</b>
+  <code>!send -rply 10 -t Reply</code> <b>Reply by MessageID</b>
+  <code>!send -id -12345678901 -del 50</code> <b>Delete message by MessageID</b>
+send_button_url_no_text: "Click"
+send_button_callback_no_text: "Click"
+send_success: "Message sent by admin {user_id}"
+send_deleted: "Message {id} deleted by admin {user_id}"
+send_invalid_id: "Error: Invalid ID"
+send_api_error: "Error: API: {e}"
+send_forwarded: "Message forwarded by admin {user_id}"
+send_no_content: "Your message contains no content or text to process"
+send_edited: "Message {id} edited by admin {user_id}"
+send_not_modified: "Error: message was not modified"
+send_exception_error: "Error: Exception: {e}"

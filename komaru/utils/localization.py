@@ -16,8 +16,8 @@ from hydrogram.types import CallbackQuery, InlineQuery, Message, ChatMemberUpdat
 from komaru.database.localization import get_db_lang
 
 enabled_locales: list[str] = [
-    "en-GB",  # English (United Kingdom)
-    "ru-RU",  # Russian
+    "en-GB",  # EN (United Kingdom)
+    "ru-RU",  # RU
 ]
 
 default_language: str = "en-GB"

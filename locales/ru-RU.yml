@@ -86,3 +86,38 @@ xash_players: "# Имя [Фраги] (Время)"
 xash_protocol: "Протокол: "
 xash_select_server: "Найденно {count} серверов. Выберите нужный сервер:\n\n☑=Верифицирован"
 parsebtn_err: "<b>Укажите ссылку и текст кнопки</b>:\n<b>Пример</b>: <code>https://hash3d.top Catch the f1sh if you can</code>\n<b>Результат</b>: <code>[Catch the f1sh if you can](buttonurl:https://hash3d.top)</code>"
+send_help: |
+  <b>Команда:</b> <code>!send</code>
+  Отправка сообщений с поддержкой кнопок.
+
+  <b>Аргументы:</b>
+  ››› <code>-t</code> — текст
+  ››› <code>-id</code> — ID чата
+  ››› <code>-tid</code> — ID темы форума
+  ››› <code>-rply</code> — ответить на сообщение по ID
+  ››› <code>-url(Number)</code> — добавить кнопку с URL
+  ››› <code>-cb(Number)</code> — добавить callback-кнопку
+  ››› <code>-edit</code> — редактировать сообщение
+  ››› <code>-del</code> — удалить сообщение
+  ››› <code>-fwd</code> — переслать сообщение
+  ››› <code>-h</code> — показать справку
+  ››› <code>|</code> - Разделитель для url/cb кнопок
+
+  <b>Примеры:</b>
+  <code>!send -t Привет\nМир</code> <b>Обычное сообщение</b>
+  <code>!send -id -1001234567890 -tid 55 -t Привет!</code> <b>Сообщение в топик</b>
+  <code>!send -t Ссылка на сайт -url1 https://github.com Ссылка на GitHub</code> <b>Сообщение с URL кнопкой</b>
+  <code>!send -t Текст с Callback кнопкой -cb1 start_pvt Start Private</code> <b>Сообщение с Callback кнопкой</b>
+  <code>!send -rply 10 -t Ответ</code> <b>Ответ по MessageID</b>
+  <code>!send -id -12345678901 -del 50</code> <b>Удаляет сообщение по MessageID</b>
+send_button_url_no_text: "Клик"
+send_button_callback_no_text: "Клик"
+send_success: "Сообщение отправлено админом {user_id}"
+send_deleted: "Сообщение {id} удалено админом {user_id}"
+send_invalid_id: "Ошибка: Неверный id"
+send_api_error: "Ошибка: API: {e}"
+send_forwarded: "Сообщение переслано админом {user_id}"
+send_no_content: "В вашем сообщении нет контента или текста с которым можно взаимодействовать"
+send_edited: "Сообщение {id} отредактировано админом {user_id}"
+send_not_modified: "Ошибка: сообщение не было отредактировано"
+send_exception_error: "Ошибка: Exception: {e}"
